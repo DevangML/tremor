@@ -53,3 +53,11 @@ Before suggesting, writing, or refactoring ANY Flutter, Dart (or React/frontend)
       extends Failure;
   ```
 - This completely eliminates the initializer list `: super(...)` and the entire class body `{}`.
+
+---
+
+## MANDATORY LSP & CODE INTELLIGENCE RULE: PREFER SERENA OVER GREP
+- Whenever inspecting, searching, navigating, or analyzing code in this repository:
+  1. **DO NOT rely on raw text grep/regex searches** across source code if symbolic analysis is needed.
+  2. **Use Serena's semantic code intelligence tools** (`find_symbol`, `get_symbols_overview`, `find_referencing_symbols`, `find_declaration`, `find_implementations`) to inspect class definitions, call graphs, and references with maximum precision and zero token waste.
+  3. **Read/Write Serena Memories**: Consult and update `.serena/memories/` for project context, architectural invariants, and design decisions rather than re-reading large files repeatedly.

@@ -1,4 +1,3 @@
-import 'package:tremor/core/geo/coordinates.dart';
 import 'package:tremor/features/earthquakes/data/models/earthquake_dto.dart';
 import 'package:tremor/features/earthquakes/domain/entities/earthquake_entity.dart';
 

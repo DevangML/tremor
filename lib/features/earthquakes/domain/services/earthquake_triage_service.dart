@@ -1,4 +1,5 @@
 import 'dart:math' as math;
+
 import 'package:tremor/core/geo/coordinates.dart';
 import 'package:tremor/features/earthquakes/domain/entities/earthquake_entity.dart';
 

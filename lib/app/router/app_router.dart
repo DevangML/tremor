@@ -8,15 +8,13 @@ final class AppRouter {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     return switch (settings.name) {
       home => MaterialPageRoute<void>(
-          builder: (_) => const Scaffold(
-            body: Center(child: Text('Tremor Active')),
-          ),
-        ),
+        builder: (_) =>
+            const Scaffold(body: Center(child: Text('Tremor Active'))),
+      ),
       _ => MaterialPageRoute<void>(
-          builder: (_) => const Scaffold(
-            body: Center(child: Text('Route Not Found')),
-          ),
-        ),
+        builder: (_) =>
+            const Scaffold(body: Center(child: Text('Route Not Found'))),
+      ),
     };
   }
 }

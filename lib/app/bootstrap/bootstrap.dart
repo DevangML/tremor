@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:ui';
+
 import 'package:flutter/widgets.dart';
 import 'package:tremor/app/config/env_config.dart';
 import 'package:tremor/app/di/service_locator.dart';

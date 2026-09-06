@@ -1,7 +1,7 @@
 enum Environment { dev, staging, prod }
 
 final class EnvConfig {
-  const EnvConfig({
+  const new({
     required this.environment,
     required this.apiBaseUrl,
     required this.enableDetailedLogs,

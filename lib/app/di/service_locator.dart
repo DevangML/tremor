@@ -20,7 +20,7 @@ import 'package:tremor/features/earthquakes/presentation/mappers/earthquake_pres
 /// The Central Composition Root Container (Zone 2).
 /// Instantiates all singletons and wires them into Domain contracts top-down.
 final class ServiceLocator {
-  ServiceLocator._();
+  new _();
 
   static final ServiceLocator instance = ServiceLocator._();
 

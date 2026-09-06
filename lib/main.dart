@@ -5,13 +5,13 @@ void main() {
 }
 
 class TremorApp extends StatelessWidget {
-  const TremorApp({super.key});
+  const new({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'Tremor',
-      home: const Scaffold(
+      home: Scaffold(
         body: Center(child: Text('Blank Slate')),
       ),
     );

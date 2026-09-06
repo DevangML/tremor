@@ -13,7 +13,9 @@ import 'package:tremor/features/earthquakes/application/index.dart'
     show
         EarthquakeApplicationService,
         EmergencyAlertOrchestrator,
+        FilterEarthquakesQuery,
         GetEarthquakeQuery,
+        HazardAssessmentOrchestrator,
         TriageEarthquakeCommand;
 import 'package:tremor/features/earthquakes/data/index.dart'
     show
@@ -51,9 +53,11 @@ final class ServiceLocator {
 
   // Application Layer (CQRS)
   late GetEarthquakeQuery getEarthquakeQuery;
+  late FilterEarthquakesQuery filterEarthquakesQuery;
   late TriageEarthquakeCommand triageEarthquakeCommand;
   late EarthquakeApplicationService applicationService;
   late EmergencyAlertOrchestrator emergencyAlertOrchestrator;
+  late HazardAssessmentOrchestrator hazardAssessmentOrchestrator;
 
   // Presentation Mappers
   late EarthquakePresentationMapper presentationMapper;
@@ -79,6 +83,10 @@ final class ServiceLocator {
 
     // Application Layer Wiring
     getEarthquakeQuery = GetEarthquakeQuery(earthquakeRepository);
+    filterEarthquakesQuery = FilterEarthquakesQuery(
+      repository: earthquakeRepository,
+      triageService: triageService,
+    );
     triageEarthquakeCommand = TriageEarthquakeCommand(earthquakeRepository);
     applicationService = EarthquakeApplicationService(
       earthquakeRepository: earthquakeRepository,
@@ -89,6 +97,11 @@ final class ServiceLocator {
       command: triageEarthquakeCommand,
       hapticGateway: hapticGateway,
       triageService: triageService,
+    );
+    hazardAssessmentOrchestrator = HazardAssessmentOrchestrator(
+      repository: earthquakeRepository,
+      triageService: triageService,
+      hapticGateway: hapticGateway,
     );
 
     // Presentation Layer Wiring

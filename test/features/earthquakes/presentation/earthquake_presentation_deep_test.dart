@@ -46,8 +46,15 @@ void main() {
       final loading = EarthquakeLoadingState();
       expect(loading, isA<EarthquakeState>());
 
-      final loaded = EarthquakeLoadedState([]);
+      final loaded = EarthquakeLoadedState(earthquakes: []);
       expect(loaded.earthquakes, isEmpty);
+      expect(loaded.selectedMinMag, equals(2.0));
+
+      final loadedFiltered = EarthquakeLoadedState(
+        earthquakes: [],
+        selectedMinMag: 4.5,
+      );
+      expect(loadedFiltered.selectedMinMag, equals(4.5));
 
       final error = EarthquakeErrorState('Failed to fetch');
       expect(error.message, 'Failed to fetch');

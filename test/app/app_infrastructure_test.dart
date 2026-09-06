@@ -29,9 +29,11 @@ void main() {
       expect(locator.earthquakeRepository, isNotNull);
       expect(locator.triageService, isNotNull);
       expect(locator.getEarthquakeQuery, isNotNull);
+      expect(locator.filterEarthquakesQuery, isNotNull);
       expect(locator.triageEarthquakeCommand, isNotNull);
       expect(locator.applicationService, isNotNull);
       expect(locator.emergencyAlertOrchestrator, isNotNull);
+      expect(locator.hazardAssessmentOrchestrator, isNotNull);
       expect(locator.presentationMapper, isNotNull);
     });
 

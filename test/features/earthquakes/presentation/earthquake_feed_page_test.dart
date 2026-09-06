@@ -87,6 +87,17 @@ void main() {
         expect(find.text('Active Tremors'), findsAtLeastNWidgets(1));
         expect(find.text('San Francisco, CA'), findsOneWidget);
         expect(find.text('6.8'), findsOneWidget);
+
+        // Tap filter chip for 5.0+ (Severe)
+        expect(find.text('5.0+ (Severe)'), findsOneWidget);
+        await tester.tap(find.text('5.0+ (Severe)'));
+        await tester.pumpAndSettle();
+        expect(find.text('San Francisco, CA'), findsOneWidget);
+
+        // Tap filter chip for 3.0+
+        await tester.tap(find.text('3.0+'));
+        await tester.pumpAndSettle();
+        expect(find.text('San Francisco, CA'), findsOneWidget);
       },
     );
   });

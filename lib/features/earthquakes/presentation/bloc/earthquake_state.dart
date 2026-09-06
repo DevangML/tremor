@@ -6,7 +6,9 @@ final class EarthquakeInitialState() extends EarthquakeState;
 
 final class EarthquakeLoadingState() extends EarthquakeState;
 
-final class EarthquakeLoadedState(final List<EarthquakeCardUiModel> earthquakes)
-    extends EarthquakeState;
+final class EarthquakeLoadedState({
+  required final List<EarthquakeCardUiModel> earthquakes,
+  final double selectedMinMag = 2.0,
+}) extends EarthquakeState;
 
 final class EarthquakeErrorState(final String message) extends EarthquakeState;

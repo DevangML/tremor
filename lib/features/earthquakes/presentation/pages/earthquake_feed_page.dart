@@ -11,7 +11,9 @@ import 'package:tremor/features/earthquakes/presentation/index.dart'
         EarthquakeLoadingState,
         EarthquakeState,
         FetchEarthquakesEvent,
-        MagnitudeBadgeWidget;
+        FilterByMagnitudeEvent,
+        MagnitudeBadgeWidget,
+        TremorFilterBarDelegate;
 
 final class EarthquakeFeedPage extends StatelessWidget {
   const new({super.key});
@@ -26,9 +28,11 @@ final class EarthquakeFeedPage extends StatelessWidget {
           EarthquakeLoadingState() => const Center(
             child: CircularProgressIndicator(color: TremorColors.moderate),
           ),
-          EarthquakeLoadedState(:final earthquakes) => _buildLoadedView(
+          EarthquakeLoadedState(:final earthquakes, :final selectedMinMag) =>
+              _buildLoadedView(
             context,
             earthquakes,
+            selectedMinMag,
           ),
           EarthquakeErrorState(:final message) => _buildErrorView(
             context,
@@ -74,12 +78,22 @@ final class EarthquakeFeedPage extends StatelessWidget {
   Widget _buildLoadedView(
     BuildContext context,
     List<EarthquakeCardUiModel> items,
+    double selectedMinMag,
   ) {
     return CustomScrollView(
       slivers: [
         const SliverAppBar.large(
           backgroundColor: TremorColors.background,
           title: Text('Active Tremors', style: TextStyle(color: Colors.white)),
+        ),
+        SliverPersistentHeader(
+          pinned: true,
+          delegate: TremorFilterBarDelegate(
+            selectedMinMag: selectedMinMag,
+            onMagnitudeSelected: (mag) => context
+                .read<EarthquakeBloc>()
+                .add(FilterByMagnitudeEvent(mag)),
+          ),
         ),
         SliverPadding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),

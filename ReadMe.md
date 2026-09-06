@@ -19,21 +19,21 @@ Tremor is architected around a strict **Two-Zone Clean Architecture + CQRS + DDD
 ```mermaid
 graph TD
     subgraph "Zone 2: Infrastructure & Frameworks"
-        UI[Presentation: Slivers / Viewport / CustomPainter]
-        BLOC[BLoC State Machine]
+        UI[Presentation: Slivers / Viewport / Filter Bar / CustomPainter]
+        BLOC[BLoC State Machine: FilterByMagnitudeEvent]
         DATA[Data Layer: Freezed DTOs / Remote DS / USGS Feed]
         HARDWARE[Platform Haptics / Channels / Hardware Gateway]
         DI[Composition Root: ServiceLocator / Bootstrap]
     end
 
     subgraph "Zone 1: The Core (Pure Domain & Application)"
-        CQRS_R[CQRS Read: GetEarthquakeQuery]
+        CQRS_R[CQRS Read: GetEarthquakeQuery / FilterEarthquakesQuery]
         CQRS_W[CQRS Write: TriageEarthquakeCommand]
-        SAGA[Orchestrator: EmergencyAlertOrchestrator]
+        SAGA[Orchestrators: EmergencyAlertOrchestrator / HazardAssessmentOrchestrator]
         ENTITIES[Domain Entities: EarthquakeEntity]
-        VO[Value Objects: Magnitude Extension Type]
+        VO[Value Objects: Magnitude & HazardLevel Extension Types]
         SERVICES[Pure Math: EarthquakeTriageService - Haversine]
-        EVENTS[Domain Events: MajorTremorDetectedEvent]
+        EVENTS[Domain Events: MajorTremor / SecondaryHazardPredicted]
     end
 
     UI --> BLOC
@@ -52,15 +52,17 @@ graph TD
 ### 1. Zone 1: Pure Business Core (Zero Framework Coupling)
 - **Domain Layer (`lib/features/earthquakes/domain/`)**:
   - `EarthquakeEntity`: Immutable business entity constructed with named records for geodetic coordinates.
-  - `Magnitude`: Zero-cost `extension type const Magnitude(double value) implements double` providing compile-time type safety with zero runtime allocation overhead.
+  - `Magnitude` & `HazardLevel`: Zero-cost `extension type` primitives providing compile-time type safety with zero runtime allocation overhead.
   - `EarthquakeTriageService`: Pure trigonometric calculation engine using the spherical **Haversine formula** ($R = 6371\text{ km}$) for low-latency proximity filtering.
-  - `EarthquakeDomainEvent`: Exhaustive sealed class hierarchy (`MajorTremorDetectedEvent`, `EarthquakeClusterIdentifiedEvent`).
+  - `EarthquakeDomainEvent`: Exhaustive sealed class hierarchy (`MajorTremorDetectedEvent`, `EarthquakeClusterIdentifiedEvent`, `SecondaryHazardPredictedEvent`).
   - `EarthquakeRepository`: Pure `abstract interface class` defining domain requirements.
 - **Application Layer (`lib/features/earthquakes/application/`)**:
   - **CQRS Segregation**:
     - `GetEarthquakeQuery`: Specialized read pipeline with business-rule filtering ($\text{mag} \ge 2.0$).
+    - `FilterEarthquakesQuery`: Multi-attribute radial and magnitude filtering read pipeline.
     - `TriageEarthquakeCommand`: Specialized write command handling disaster triage status.
   - `EmergencyAlertOrchestrator`: Multi-step saga coordinating query retrieval, trigonometric distance calculation, severe tremor dispatch, and platform haptic triggering.
+  - `HazardAssessmentOrchestrator`: Regional secondary hazard & tsunami prediction engine analyzing focal depth vs. magnitude ratio.
   - `EarthquakeApplicationService`: Cache staleness validator and periodic synchronizer.
 
 ### 2. Zone 2: Infrastructure, Presentation & Composition
@@ -123,7 +125,7 @@ bootstrap.dart                      | 100%     6|    -   0
 env_config.dart                     | 100%     1|    -   0
 
 [lib/app/di/]
-service_locator.dart                | 100%    26|    -   0
+service_locator.dart                | 100%    33|    -   0
 
 [lib/app/router/]
 app_router.dart                     | 100%     6|    -   0
@@ -143,8 +145,10 @@ triage_earthquake_command.dart      | 100%     3|    -   0
 
 [lib/features/earthquakes/application/orchestrators/]
 emergency_alert_orchestrator.dart   | 100%    12|    -   0
+hazard_assessment_orchestrator.dart | 100%    15|    -   0
 
 [lib/features/earthquakes/application/queries/]
+filter_earthquakes_query.dart       | 100%     8|    -   0
 get_earthquake_query.dart           | 100%     6|    -   0
 
 [lib/features/earthquakes/application/services/]
@@ -166,16 +170,17 @@ earthquake_repository_impl.dart     | 100%    10|    -   0
 earthquake_entity.dart              | 100%     1|    -   0
 
 [lib/features/earthquakes/domain/events/]
-earthquake_domain_events.dart       | 100%     3|    -   0
+earthquake_domain_events.dart       | 100%     4|    -   0
 
 [lib/features/earthquakes/domain/services/]
 earthquake_triage_service.dart      | 100%    11|    -   0
 
 [lib/features/earthquakes/domain/value_objects/]
+hazard_level.dart                   | 100%    13|    -   0
 magnitude.dart                      | 100%     4|    -   0
 
 [lib/features/earthquakes/presentation/bloc/]
-earthquake_bloc.dart                | 100%    12|    -   0
+earthquake_bloc.dart                | 100%    22|    -   0
 earthquake_event.dart               | 100%     3|    -   0
 earthquake_state.dart               | 100%     5|    -   0
 
@@ -186,15 +191,16 @@ earthquake_presentation_mapper.dart | 100%    16|    -   0
 earthquake_card_ui_model.dart       | 100%     1|    -   0
 
 [lib/features/earthquakes/presentation/pages/]
-earthquake_feed_page.dart           | 100%    49|    -   0
+earthquake_feed_page.dart           | 100%    55|    -   0
 
 [lib/features/earthquakes/presentation/widgets/]
 magnitude_badge_widget.dart         | 100%    28|    -   0
+tremor_filter_bar_widget.dart       | 100%    21|    -   0
 
 [lib/]
 main.dart                           | 100%    10|    -   0
 ==========================================================
-                              Total:| 100%   282|    -   0
+                              Total:| 100%   363|    -   0
 ```
 
 ---

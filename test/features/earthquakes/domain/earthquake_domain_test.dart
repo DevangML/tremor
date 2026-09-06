@@ -42,6 +42,13 @@ void main() {
       final clusterEvent = EarthquakeClusterIdentifiedEvent([entity]);
       expect(clusterEvent.cluster.length, 1);
       expect(clusterEvent.cluster.first.mag, 7.1);
+
+      final hazardEvent = SecondaryHazardPredictedEvent(
+        earthquake: entity,
+        hazardLevel: const HazardLevel(4),
+      );
+      expect(hazardEvent.earthquake.id, 'quake-1');
+      expect(hazardEvent.hazardLevel.isTsunamiRisk, isTrue);
     });
   });
 }

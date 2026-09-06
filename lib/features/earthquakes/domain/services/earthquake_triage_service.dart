@@ -1,5 +1,5 @@
 import 'dart:math' as math;
-
+import 'package:tremor/core/geo/coordinates.dart';
 import 'package:tremor/features/earthquakes/domain/entities/earthquake_entity.dart';
 
 class EarthquakeTriageService {
@@ -19,7 +19,6 @@ class EarthquakeTriageService {
     return 12742 * math.asin(math.sqrt(computation));
   }
 
-  /// Filters earthquakes within a specific radius (km) from a central coordinate
   List<EarthquakeEntity> filterWithinRadius({
     required List<EarthquakeEntity> quakes,
     required Coordinates center,

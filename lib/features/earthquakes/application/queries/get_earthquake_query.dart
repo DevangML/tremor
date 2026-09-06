@@ -3,7 +3,7 @@ import 'package:tremor/core/result/result.dart';
 import 'package:tremor/features/earthquakes/domain/entities/earthquake_entity.dart';
 import 'package:tremor/features/earthquakes/domain/repositories/earthquake_repository.dart';
 
-class GetEarthquakeUsecase(final EarthquakeRepository _repository) {
+class GetEarthquakeQuery(final EarthquakeRepository _repository) {
   Future<Result<List<EarthquakeEntity>, Failure>> call() async {
     final result = await _repository.getEarthquakes();
 

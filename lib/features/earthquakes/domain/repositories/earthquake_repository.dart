@@ -4,4 +4,5 @@ import 'package:tremor/features/earthquakes/domain/entities/earthquake_entity.da
 
 abstract interface class EarthquakeRepository {
   Future<Result<List<EarthquakeEntity>, Failure>> getEarthquakes();
+  Future<Result<void, Failure>> markAsTriaged(String id);
 }

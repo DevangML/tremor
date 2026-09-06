@@ -1,4 +1,4 @@
-typedef Coordinates = ({double lat, double lng});
+import 'package:tremor/core/geo/coordinates.dart';
 
 class EarthquakeEntity({
   required final String id,

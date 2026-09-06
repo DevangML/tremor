@@ -7,6 +7,8 @@
 .atom/
 .build/
 .buildlog/
+.serena/
+.agents/
 .history
 .svn/
 .swiftpm/

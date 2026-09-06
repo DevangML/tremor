@@ -1,11 +1,9 @@
-import 'package:tremor/core/error/failures.dart';
-import 'package:tremor/core/geo/coordinates.dart';
-import 'package:tremor/core/hardware/haptic_gateway.dart';
-import 'package:tremor/core/result/result.dart';
-import 'package:tremor/features/earthquakes/application/commands/triage_earthquake_command.dart';
-import 'package:tremor/features/earthquakes/application/queries/get_earthquake_query.dart';
-import 'package:tremor/features/earthquakes/domain/entities/earthquake_entity.dart';
-import 'package:tremor/features/earthquakes/domain/services/earthquake_triage_service.dart';
+import 'package:tremor/core/index.dart'
+    show Coordinates, Failure, FailureResult, HapticGateway, Result, Success;
+import 'package:tremor/features/earthquakes/application/index.dart'
+    show GetEarthquakeQuery, TriageEarthquakeCommand;
+import 'package:tremor/features/earthquakes/domain/index.dart'
+    show EarthquakeEntity, EarthquakeTriageService;
 
 class EmergencyAlertOrchestrator({
   required final GetEarthquakeQuery query,

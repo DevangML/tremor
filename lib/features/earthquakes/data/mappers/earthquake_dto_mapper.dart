@@ -1,5 +1,7 @@
-import 'package:tremor/features/earthquakes/data/models/earthquake_dto.dart';
-import 'package:tremor/features/earthquakes/domain/entities/earthquake_entity.dart';
+import 'package:tremor/features/earthquakes/data/index.dart'
+    show EarthquakeDto;
+import 'package:tremor/features/earthquakes/domain/index.dart'
+    show EarthquakeEntity;
 
 final class EarthquakeDtoMapper {
   const new();

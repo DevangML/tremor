@@ -1,7 +1,8 @@
 import 'dart:math' as math;
 
-import 'package:tremor/core/geo/coordinates.dart';
-import 'package:tremor/features/earthquakes/domain/entities/earthquake_entity.dart';
+import 'package:tremor/core/index.dart' show Coordinates;
+import 'package:tremor/features/earthquakes/domain/index.dart'
+    show EarthquakeEntity;
 
 class EarthquakeTriageService {
   const new();

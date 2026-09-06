@@ -1,9 +1,9 @@
-import 'package:tremor/core/error/failures.dart';
-import 'package:tremor/core/result/result.dart';
-import 'package:tremor/features/earthquakes/data/datasources/earthquake_remote_data_source.dart';
-import 'package:tremor/features/earthquakes/data/mappers/earthquake_dto_mapper.dart';
-import 'package:tremor/features/earthquakes/domain/entities/earthquake_entity.dart';
-import 'package:tremor/features/earthquakes/domain/repositories/earthquake_repository.dart';
+import 'package:tremor/core/index.dart'
+    show Failure, FailureResult, Result, ServerFailure, Success;
+import 'package:tremor/features/earthquakes/data/index.dart'
+    show EarthquakeDtoMapper, EarthquakeRemoteDataSource;
+import 'package:tremor/features/earthquakes/domain/index.dart'
+    show EarthquakeEntity, EarthquakeRepository;
 
 final class EarthquakeRepositoryImpl({
   required final EarthquakeRemoteDataSource remoteDataSource,

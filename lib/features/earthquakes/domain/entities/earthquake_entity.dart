@@ -1,4 +1,4 @@
-import 'package:tremor/core/geo/coordinates.dart';
+import 'package:tremor/core/index.dart' show Coordinates;
 
 class EarthquakeEntity({
   required final String id,

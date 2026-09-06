@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:tremor/features/earthquakes/domain/entities/earthquake_entity.dart';
-import 'package:tremor/features/earthquakes/domain/services/earthquake_triage_service.dart';
+import 'package:tremor/features/earthquakes/domain/index.dart'
+    show EarthquakeEntity, EarthquakeTriageService;
 
 void main() {
   group('EarthquakeTriageService (Pure Domain Unit Tests)', () {

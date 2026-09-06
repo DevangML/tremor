@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tremor/app/bootstrap/bootstrap.dart';
-import 'package:tremor/app/di/service_locator.dart';
-import 'package:tremor/features/earthquakes/presentation/bloc/earthquake_bloc.dart';
-import 'package:tremor/features/earthquakes/presentation/pages/earthquake_feed_page.dart';
+import 'package:tremor/app/index.dart' show ServiceLocator, bootstrap;
+import 'package:tremor/features/earthquakes/presentation/index.dart'
+    show EarthquakeBloc, EarthquakeFeedPage;
 
 Future<void> main() async {
   await bootstrap(() => const TremorApp());

@@ -1,8 +1,7 @@
-import 'package:tremor/core/error/failures.dart';
-import 'package:tremor/core/result/result.dart';
-import 'package:tremor/core/storage/sync_metadata_storage.dart';
-import 'package:tremor/features/earthquakes/domain/entities/earthquake_entity.dart';
-import 'package:tremor/features/earthquakes/domain/repositories/earthquake_repository.dart';
+import 'package:tremor/core/index.dart'
+    show Failure, Result, Success, SyncMetadataStorage;
+import 'package:tremor/features/earthquakes/domain/index.dart'
+    show EarthquakeEntity, EarthquakeRepository;
 
 class EarthquakeApplicationService({
   required final EarthquakeRepository earthquakeRepository,

@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tremor/core/design_system/tremor_theme.dart';
-import 'package:tremor/features/earthquakes/presentation/bloc/earthquake_bloc.dart';
-import 'package:tremor/features/earthquakes/presentation/bloc/earthquake_event.dart';
-import 'package:tremor/features/earthquakes/presentation/bloc/earthquake_state.dart';
-import 'package:tremor/features/earthquakes/presentation/models/earthquake_card_ui_model.dart';
-import 'package:tremor/features/earthquakes/presentation/widgets/magnitude_badge_widget.dart';
+import 'package:tremor/core/index.dart' show TremorColors;
+import 'package:tremor/features/earthquakes/presentation/index.dart'
+    show
+        EarthquakeBloc,
+        EarthquakeCardUiModel,
+        EarthquakeErrorState,
+        EarthquakeInitialState,
+        EarthquakeLoadedState,
+        EarthquakeLoadingState,
+        EarthquakeState,
+        FetchEarthquakesEvent,
+        MagnitudeBadgeWidget;
 
 final class EarthquakeFeedPage extends StatelessWidget {
   const new({super.key});

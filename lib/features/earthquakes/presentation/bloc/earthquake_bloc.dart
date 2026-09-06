@@ -1,9 +1,17 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tremor/core/result/result.dart';
-import 'package:tremor/features/earthquakes/application/orchestrators/emergency_alert_orchestrator.dart';
-import 'package:tremor/features/earthquakes/presentation/bloc/earthquake_event.dart';
-import 'package:tremor/features/earthquakes/presentation/bloc/earthquake_state.dart';
-import 'package:tremor/features/earthquakes/presentation/mappers/earthquake_presentation_mapper.dart';
+import 'package:tremor/core/index.dart' show FailureResult, Success;
+import 'package:tremor/features/earthquakes/application/index.dart'
+    show EmergencyAlertOrchestrator;
+import 'package:tremor/features/earthquakes/presentation/index.dart'
+    show
+        EarthquakeErrorState,
+        EarthquakeEvent,
+        EarthquakeInitialState,
+        EarthquakeLoadedState,
+        EarthquakeLoadingState,
+        EarthquakePresentationMapper,
+        EarthquakeState,
+        FetchEarthquakesEvent;
 
 class EarthquakeBloc extends Bloc<EarthquakeEvent, EarthquakeState> {
   new({required this._orchestrator, required this._mapper})

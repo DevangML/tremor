@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-final class TremorColors {
-  const new _();
-
+abstract final class TremorColors {
   static const Color low = Color(0xFF00BFA5); // Teal
   static const Color moderate = Color(0xFFFF9100); // Amber Orange
   static const Color severe = Color(0xFFFF1744); // Deep Alert Red

@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:tremor/core/error/failures.dart';
-import 'package:tremor/core/hardware/haptic_gateway.dart';
-import 'package:tremor/core/result/result.dart';
-import 'package:tremor/features/earthquakes/application/commands/triage_earthquake_command.dart';
-import 'package:tremor/features/earthquakes/application/orchestrators/emergency_alert_orchestrator.dart';
-import 'package:tremor/features/earthquakes/application/queries/get_earthquake_query.dart';
-import 'package:tremor/features/earthquakes/domain/entities/earthquake_entity.dart';
-import 'package:tremor/features/earthquakes/domain/repositories/earthquake_repository.dart';
-import 'package:tremor/features/earthquakes/domain/services/earthquake_triage_service.dart';
-import 'package:tremor/features/earthquakes/presentation/bloc/earthquake_bloc.dart';
-import 'package:tremor/features/earthquakes/presentation/mappers/earthquake_presentation_mapper.dart';
-import 'package:tremor/features/earthquakes/presentation/pages/earthquake_feed_page.dart';
+import 'package:tremor/core/index.dart'
+    show Failure, HapticGateway, Result, Success;
+import 'package:tremor/features/earthquakes/application/index.dart'
+    show
+        EmergencyAlertOrchestrator,
+        GetEarthquakeQuery,
+        TriageEarthquakeCommand;
+import 'package:tremor/features/earthquakes/domain/index.dart'
+    show EarthquakeEntity, EarthquakeRepository, EarthquakeTriageService;
+import 'package:tremor/features/earthquakes/presentation/index.dart'
+    show
+        EarthquakeBloc,
+        EarthquakeFeedPage,
+        EarthquakePresentationMapper;
 
 final class TestRepo implements EarthquakeRepository {
   new(this.quakes);

@@ -1,6 +1,6 @@
-import 'package:tremor/core/error/failures.dart';
-import 'package:tremor/core/result/result.dart';
-import 'package:tremor/features/earthquakes/domain/entities/earthquake_entity.dart';
+import 'package:tremor/core/index.dart' show Failure, Result;
+import 'package:tremor/features/earthquakes/domain/index.dart'
+    show EarthquakeEntity;
 
 abstract interface class EarthquakeRepository {
   Future<Result<List<EarthquakeEntity>, Failure>> getEarthquakes();

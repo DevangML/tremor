@@ -1,6 +1,8 @@
-import 'package:tremor/core/design_system/tremor_theme.dart';
-import 'package:tremor/features/earthquakes/domain/entities/earthquake_entity.dart';
-import 'package:tremor/features/earthquakes/presentation/models/earthquake_card_ui_model.dart';
+import 'package:tremor/core/index.dart' show TremorColors;
+import 'package:tremor/features/earthquakes/domain/index.dart'
+    show EarthquakeEntity;
+import 'package:tremor/features/earthquakes/presentation/index.dart'
+    show EarthquakeCardUiModel;
 
 final class EarthquakePresentationMapper {
   const new();

@@ -1,9 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:tremor/core/error/failures.dart';
-import 'package:tremor/core/result/result.dart';
-import 'package:tremor/features/earthquakes/application/queries/get_earthquake_query.dart';
-import 'package:tremor/features/earthquakes/domain/entities/earthquake_entity.dart';
-import 'package:tremor/features/earthquakes/domain/repositories/earthquake_repository.dart';
+import 'package:tremor/core/index.dart'
+    show Failure, FailureResult, Result, ServerFailure, Success;
+import 'package:tremor/features/earthquakes/application/index.dart'
+    show GetEarthquakeQuery;
+import 'package:tremor/features/earthquakes/domain/index.dart'
+    show EarthquakeEntity, EarthquakeRepository;
 
 final class FakeEarthquakeRepository implements EarthquakeRepository {
   new(this._result);

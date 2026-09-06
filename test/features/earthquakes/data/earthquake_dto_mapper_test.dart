@@ -1,6 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:tremor/features/earthquakes/data/mappers/earthquake_dto_mapper.dart';
-import 'package:tremor/features/earthquakes/data/models/earthquake_dto.dart';
+import 'package:tremor/features/earthquakes/data/index.dart'
+    show
+        EarthquakeDto,
+        EarthquakeDtoMapper,
+        EarthquakeGeometryDto,
+        EarthquakePropertiesDto;
 
 void main() {
   group('EarthquakeDtoMapper (Data Layer Mapping)', () {
@@ -14,7 +18,9 @@ void main() {
           place: 'San Francisco, CA',
           time: 1725619200000,
         ),
-        geometry: EarthquakeGeometryDto(coordinates: [-122.4194, 37.7749, 8.0]),
+        geometry: EarthquakeGeometryDto(
+          coordinates: [-122.4194, 37.7749, 8.0],
+        ),
       );
 
       final entity = mapper.toEntity(dto);

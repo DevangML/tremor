@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-final class AppRouter {
-  const new _();
-
+abstract final class AppRouter {
   static const String home = '/';
 
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {

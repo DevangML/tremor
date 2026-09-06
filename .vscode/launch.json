@@ -1,0 +1,66 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Tremor: Android (Debug)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "flutterMode": "debug",
+      "args": ["-d", "android"]
+    },
+    {
+      "name": "Tremor: iOS Simulator (Debug)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "flutterMode": "debug",
+      "args": ["-d", "iPhone"]
+    },
+    {
+      "name": "Tremor: Auto-Detect Device (Debug)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "flutterMode": "debug"
+    },
+    {
+      "name": "Tremor: Android (Profile)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "flutterMode": "profile",
+      "args": ["-d", "android"]
+    },
+    {
+      "name": "Tremor: iOS (Profile)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "flutterMode": "profile",
+      "args": ["-d", "iPhone"]
+    },
+    {
+      "name": "Tremor: Android (Release)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "flutterMode": "release",
+      "args": ["-d", "android"]
+    },
+    {
+      "name": "Tremor: iOS (Release)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "flutterMode": "release",
+      "args": ["-d", "iPhone"]
+    },
+    {
+      "name": "Tremor: Run All Unit & Widget Tests",
+      "request": "launch",
+      "type": "dart",
+      "program": "test"
+    }
+  ]
+}
